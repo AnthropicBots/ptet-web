@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us & Feedback | PTE HUB</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="../styles/css/style.css">
+    <link rel="stylesheet" href="../styles/css/navbar.css">
+    <link rel="stylesheet" href="../styles/css/footer.css">
+    <link rel="stylesheet" href="../styles/css/contact.css">
+    <link rel="stylesheet" href="../styles/css/auth-popup.css">
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header id="header">
+        <div id="navbar-placeholder"></div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <div class="hero-inner">
+                <span class="hero-badge">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </span>
+                <h1>Contact Us & Feedback</h1>
+                <p>
+                    Have questions about the PTE Academic test, study materials, or want to share your feedback? We are here to support your international education journey.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Content Section -->
+        <section class="contact-section">
+            <div class="container contact-grid">
+                
+                <!-- Left: Contact Details & Info -->
+                <div class="contact-info-card">
+                    <h2>Reach Our Support Team</h2>
+                    <p class="contact-info-desc">
+                        Our support team is available to assist you with preparation queries, test format questions, or website technical assistance.
+                    </p>
+
+                    <div class="info-items">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-text">
+                                <h3>Email Us</h3>
+                                <p><a href="mailto:support@ptehub.com">support@ptehub.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-text">
+                                <h3>Call Us</h3>
+                                <p><a href="tel:+9183025XXXXX">+91 83025XXXXX</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-text">
+                                <h3>Main Office</h3>
+                                <p>Authorized PTE Hub Center, Jaipur, Rajasthan, India</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-text">
+                                <h3>Operating Hours</h3>
+                                <p>Monday – Friday: 9:00 AM – 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Map Mockup -->
+                    <div class="map-mockup">
+                        <div class="map-overlay">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Interactive Map Mockup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="contact-form-card">
+                    <h2>Send a Message</h2>
+                    <p class="form-desc">Fill out the form below, and we'll reply within 24–48 hours.</p>
+
+                    <form id="contactForm" novalidate>
+                        <!-- Name Field -->
+                        <div class="form-group">
+                            <label for="contact-name">Full Name <span class="required-star">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="contact-name" name="name" placeholder="Enter your full name" required minlength="2">
+                            </div>
+                            <span class="error-msg" id="name-error">Please enter at least 2 characters.</span>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="contact-email">Email Address <span class="required-star">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="contact-email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                            <span class="error-msg" id="email-error">Please enter a valid email address.</span>
+                        </div>
+
+                        <!-- Subject Field -->
+                        <div class="form-group">
+                            <label for="contact-subject">Subject <span class="required-star">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-tag input-icon"></i>
+                                <input type="text" id="contact-subject" name="subject" placeholder="Select or type a subject" required>
+                            </div>
+                            <span class="error-msg" id="subject-error">Subject field cannot be empty.</span>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div class="form-group">
+                            <label for="contact-message">Message <span class="required-star">*</span></label>
+                            <div class="input-wrapper text-wrapper">
+                                <i class="fas fa-comment-dots input-icon textarea-icon"></i>
+                                <textarea id="contact-message" name="message" rows="5" placeholder="Type your message here (min. 10 characters)..." required minlength="10"></textarea>
+                            </div>
+                            <span class="error-msg" id="message-error">Please enter at least 10 characters.</span>
+                        </div>
+
+                        <button type="submit" class="contact-submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Auth popup placeholder -->
+    <div id="auth-popup-placeholder"></div>
+
+    <!-- Success Modal Overlay -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-card">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Thank You!</h2>
+            <p>Your message has been sent successfully. We will get back to you as soon as possible.</p>
+            <div class="submission-details" id="modalSubmissionDetails">
+                <!-- Javascript will inject mock submission data preview here -->
+            </div>
+            <button class="modal-close-btn" id="closeModalBtn">Dismiss</button>
+        </div>
+    </div>
+
+    <!-- Scroll To Top Button -->
+    <button id="scrollTopBtn" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Core Scripts -->
+    <script src="../scripts/js/navbar.js"></script>
+    <script src="../scripts/js/footer.js"></script>
+    <script src="../scripts/js/script.js"></script>
+    <script src="../scripts/js/auth-popup.js"></script>
+    <!-- Feature Script -->
+    <script src="../scripts/js/contact.js"></script>
+
+</body>
+</html>
