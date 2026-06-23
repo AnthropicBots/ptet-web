@@ -141,3 +141,41 @@ document.addEventListener("click", (e) => {
 initRegister();
 initLogin();
 initProfile();
+
+
+// ============================================
+// PASSWORD SHOW/HIDE TOGGLE - FIXED
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButtons = document.querySelectorAll('.toggle-password');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const input = this.closest('.password-group').querySelector('input');
+            const isPassword = input.type === 'password';
+
+            // Toggle input type
+            input.type = isPassword ? 'text' : 'password';
+
+            // ✅ Toggle class on button - CSS handles icon visibility
+            this.classList.toggle('visible');
+            
+            // Update aria-label
+            this.setAttribute(
+                'aria-label',
+                isPassword ? 'Hide password' : 'Show password'
+            );
+        });
+
+        // Keyboard support
+        button.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+});
