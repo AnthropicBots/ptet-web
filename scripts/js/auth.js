@@ -1,4 +1,148 @@
-// ---- user database ----
+// ============================================
+// RATE LIMITER CLASS
+// ============================================
+
+class RateLimiter {
+    constructor(options = {}) {
+        this.windowMs = options.windowMs || 15 * 60 * 1000;
+        this.maxAttempts = options.maxAttempts || 5;
+        this.storageKey = options.storageKey || 'rate_limit_data';
+        this.attempts = this.getAttempts();
+    }
+
+    getAttempts() {
+        try {
+            const data = JSON.parse(localStorage.getItem(this.storageKey));
+            if (data && data.count && data.timestamp) {
+                if (Date.now() - data.timestamp < this.windowMs) {
+                    return data;
+                }
+            }
+        } catch (e) {}
+        return { count: 0, timestamp: Date.now() };
+    }
+
+    saveAttempts() {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.attempts));
+    }
+
+    isRateLimited() {
+        if (Date.now() - this.attempts.timestamp > this.windowMs) {
+            this.attempts = { count: 0, timestamp: Date.now() };
+            this.saveAttempts();
+            return false;
+        }
+        return this.attempts.count >= this.maxAttempts;
+    }
+
+    incrementAttempts() {
+        if (Date.now() - this.attempts.timestamp > this.windowMs) {
+            this.attempts = { count: 0, timestamp: Date.now() };
+        }
+        this.attempts.count++;
+        this.saveAttempts();
+    }
+
+    getRemainingAttempts() {
+        if (Date.now() - this.attempts.timestamp > this.windowMs) {
+            return this.maxAttempts;
+        }
+        return Math.max(0, this.maxAttempts - this.attempts.count);
+    }
+
+    getTimeRemaining() {
+        const elapsed = Date.now() - this.attempts.timestamp;
+        const remaining = Math.max(0, this.windowMs - elapsed);
+        return Math.ceil(remaining / 1000);
+    }
+
+    getFormattedTimeRemaining() {
+        const seconds = this.getTimeRemaining();
+        if (seconds < 60) {
+            return `${seconds} seconds`;
+        } else if (seconds < 3600) {
+            const minutes = Math.ceil(seconds / 60);
+            return `${minutes} minute${minutes > 1 ? 's' : ''}`;
+        } else {
+            const hours = Math.ceil(seconds / 3600);
+            return `${hours} hour${hours > 1 ? 's' : ''}`;
+        }
+    }
+
+    reset() {
+        this.attempts = { count: 0, timestamp: Date.now() };
+        this.saveAttempts();
+    }
+}
+
+// ============================================
+// RATE LIMITER INSTANCES
+// ============================================
+
+const loginRateLimiter = new RateLimiter({
+    windowMs: 15 * 60 * 1000,
+    maxAttempts: 5,
+    storageKey: 'login_rate_limit'
+});
+
+const signupRateLimiter = new RateLimiter({
+    windowMs: 60 * 60 * 1000,
+    maxAttempts: 3,
+    storageKey: 'signup_rate_limit'
+});
+
+// ============================================
+// RATE LIMITER FUNCTIONS
+// ============================================
+
+function checkLoginRateLimit() {
+    if (loginRateLimiter.isRateLimited()) {
+        const time = loginRateLimiter.getFormattedTimeRemaining();
+        return {
+            allowed: false,
+            message: `Too many login attempts. Please try again after ${time}.`,
+            remaining: loginRateLimiter.getRemainingAttempts(),
+            timeRemaining: loginRateLimiter.getTimeRemaining()
+        };
+    }
+    return {
+        allowed: true,
+        remaining: loginRateLimiter.getRemainingAttempts()
+    };
+}
+
+function incrementLoginAttempts() {
+    loginRateLimiter.incrementAttempts();
+}
+
+function resetLoginRateLimit() {
+    loginRateLimiter.reset();
+}
+
+function checkSignupRateLimit() {
+    if (signupRateLimiter.isRateLimited()) {
+        const time = signupRateLimiter.getFormattedTimeRemaining();
+        return {
+            allowed: false,
+            message: `Too many signup attempts. Please try again after ${time}.`,
+            remaining: signupRateLimiter.getRemainingAttempts(),
+            timeRemaining: signupRateLimiter.getTimeRemaining()
+        };
+    }
+    return {
+        allowed: true,
+        remaining: signupRateLimiter.getRemainingAttempts()
+    };
+}
+
+function incrementSignupAttempts() {
+    signupRateLimiter.incrementAttempts();
+}
+
+// ============================================
+// USER DATABASE
+// ============================================
+
 function getUsers() {
     try {
         return JSON.parse(localStorage.getItem("pte_users")) || [];
@@ -11,7 +155,10 @@ function saveUsers(users) {
     localStorage.setItem("pte_users", JSON.stringify(users));
 }
 
-// ---- current session ----
+// ============================================
+// SESSION MANAGEMENT
+// ============================================
+
 function saveSession(name, email, password) {
     localStorage.setItem("pte_user_logged_in", "true");
     localStorage.setItem("pte_user_name", name || "User");
@@ -27,13 +174,23 @@ function clearSession() {
     localStorage.removeItem("pte_user_photo");
 }
 
-//  REGISTER
+// ============================================
+// REGISTER WITH RATE LIMITING
+// ============================================
+
 function initRegister() {
     const form = document.getElementById("registerForm");
     if (!form) return;
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        // Check rate limit
+        const rateLimitCheck = checkSignupRateLimit();
+        if (!rateLimitCheck.allowed) {
+            alert(rateLimitCheck.message);
+            return;
+        }
 
         const name = document.getElementById("regName").value.trim();
         const email = document.getElementById("regEmail").value.trim().toLowerCase();
@@ -59,6 +216,9 @@ function initRegister() {
             return;
         }
 
+        // Increment signup attempts
+        incrementSignupAttempts();
+
         users.push({ name, email, password });
         saveUsers(users);
 
@@ -67,13 +227,23 @@ function initRegister() {
     });
 }
 
-//  LOGIN
+// ============================================
+// LOGIN WITH RATE LIMITING
+// ============================================
+
 function initLogin() {
     const form = document.getElementById("loginForm");
     if (!form) return;
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        // Check rate limit
+        const rateLimitCheck = checkLoginRateLimit();
+        if (!rateLimitCheck.allowed) {
+            alert(rateLimitCheck.message);
+            return;
+        }
 
         const email = document.getElementById("loginEmail").value.trim().toLowerCase();
         const password = document.getElementById("loginPassword").value;
@@ -87,16 +257,31 @@ function initLogin() {
         const user = users.find((u) => u.email === email && u.password === password);
 
         if (!user) {
-            alert("Invalid email or password.");
+            // Increment login attempts on failure
+            incrementLoginAttempts();
+            
+            const remaining = loginRateLimiter.getRemainingAttempts();
+            if (remaining > 0) {
+                alert(`Invalid email or password. ${remaining} attempt(s) remaining.`);
+            } else {
+                const time = loginRateLimiter.getFormattedTimeRemaining();
+                alert(`Too many failed attempts. Please try again after ${time}.`);
+            }
             return;
         }
+
+        // Reset login attempts on success
+        resetLoginRateLimit();
 
         saveSession(user.name, user.email, user.password);
         window.location.href = "/index.html";
     });
 }
 
-//  PROFILE PAGE
+// ============================================
+// PROFILE PAGE
+// ============================================
+
 function initProfile() {
     const nameEl = document.getElementById("profileName");
     const emailEl = document.getElementById("profileEmail");
@@ -128,7 +313,10 @@ function initProfile() {
     }
 }
 
-//  LOGOUT (delegated – works for navbar or account button)
+// ============================================
+// LOGOUT
+// ============================================
+
 document.addEventListener("click", (e) => {
     const btn = e.target.closest("#logout-btn, .logout-btn");
     if (!btn) return;
@@ -137,14 +325,8 @@ document.addEventListener("click", (e) => {
     window.location.href = "/index.html";
 });
 
-// ---- run page-specific setup ----
-initRegister();
-initLogin();
-initProfile();
-
-
 // ============================================
-// PASSWORD SHOW/HIDE TOGGLE - FIXED
+// PASSWORD SHOW/HIDE TOGGLE
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -157,20 +339,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const input = this.closest('.password-group').querySelector('input');
             const isPassword = input.type === 'password';
 
-            // Toggle input type
             input.type = isPassword ? 'text' : 'password';
-
-            // ✅ Toggle class on button - CSS handles icon visibility
             this.classList.toggle('visible');
-            
-            // Update aria-label
             this.setAttribute(
                 'aria-label',
                 isPassword ? 'Hide password' : 'Show password'
             );
         });
 
-        // Keyboard support
         button.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -179,3 +355,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// ============================================
+// RUN PAGE-SPECIFIC SETUP
+// ============================================
+
+initRegister();
+initLogin();
+initProfile();
