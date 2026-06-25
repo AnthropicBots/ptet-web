@@ -1,274 +1,189 @@
-/* ============================================
-   LOGIN & REGISTER PAGES - PROFESSIONAL
-============================================ */
-
+/* LOGIN PAGE */
 .login-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 120px 20px 80px;
-    background: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 120px 20px 80px;
+  background: #f0f2f5;
 }
 
 .login-container {
-    background: #ffffff;
-    padding: 40px 35px 35px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    width: 100%;
-    max-width: 400px;
-}
-
-/* Icon */
-.login-icon {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-icon i {
-    font-size: 40px;
-    color: #8d2123;
-    background: rgba(141, 33, 35, 0.08);
-    padding: 16px;
-    border-radius: 50%;
-    width: 72px;
-    height: 72px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
 .login-container h2 {
-    font-size: 26px;
-    font-weight: 700;
-    color: #1a1a1a;
-    text-align: center;
-    margin-bottom: 4px;
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 5px;
 }
 
 .login-subtitle {
-    text-align: center;
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 28px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
 }
 
-/* ============================================
-   INPUT GROUPS
-============================================ */
-
+/* INPUT */
 .input-group {
-    display: flex;
-    align-items: center;
-    background: #f7f8fc;
-    border-radius: 10px;
-    padding: 0 14px;
-    margin-bottom: 14px;
-    border: 1.5px solid #e8e8e8;
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  background: #f7f8fc;
+  border-radius: 10px;
+  padding: 0 14px;
+  margin-bottom: 14px;
+  border: 1.5px solid #e8e8e8;
+  transition: 0.3s;
 }
 
 .input-group:focus-within {
-    border-color: #8d2123;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(141, 33, 35, 0.06);
+  border-color: #8d2123;
+  background: #fff;
 }
 
 .input-group i {
-    color: #aaa;
-    font-size: 15px;
-    width: 18px;
-    text-align: center;
-}
-
-.input-group:focus-within i {
-    color: #8d2123;
+  color: #999;
+  width: 18px;
 }
 
 .input-group input {
-    width: 100%;
-    padding: 13px 10px;
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    color: #1a1a1a;
-    outline: none;
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 13px;
+  outline: none;
 }
 
-/* ============================================
-   PASSWORD TOGGLE (FINAL CLEAN VERSION)
-============================================ */
-
+/* PASSWORD */
 .password-group {
-    padding-right: 6px;
+  position: relative;
 }
 
 .toggle-password {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-    color: #bbb;
-    transition: all 0.25s ease;
-    flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.toggle-password:hover {
-    color: #8d2123;
-}
-
-.toggle-password:focus {
-    outline: 2px solid #8d2123;
-    outline-offset: 2px;
-}
-
-/* Icon switching */
 .toggle-password .fa-eye-slash {
-    display: none;
+  display: none;
 }
 
 .toggle-password.visible .fa-eye {
-    display: none;
+  display: none;
 }
 
 .toggle-password.visible .fa-eye-slash {
-    display: inline-block;
+  display: inline-block;
 }
 
-/* ============================================
-   BUTTONS
-============================================ */
-
-.login-submit {
-    width: 100%;
-    padding: 14px;
-    background: #8d2123;
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.login-submit:hover {
-    background: #6a181b;
-    transform: translateY(-1px);
-}
-
-/* ============================================
-   OPTIONS
-============================================ */
-
+/* OPTIONS */
 .login-options {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    margin: 10px 0 18px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 15px;
+  align-items: center;
 }
 
-.remember-me {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.remember-me input {
-    accent-color: #8d2123;
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .forgot-link {
-    color: #8d2123;
-    font-weight: 600;
-    text-decoration: none;
+  color: #8d2123;
+  text-decoration: none;
 }
 
-/* ============================================
-   SOCIAL LOGIN
-============================================ */
+/* BUTTON */
+.login-submit {
+  width: 100%;
+  padding: 14px;
+  background: #8d2123;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
+.login-submit:hover {
+  background: #6a181b;
+}
+
+/* DIVIDER */
 .auth-divider {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
 }
 
 .auth-divider::before,
 .auth-divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #e8e8e8;
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
 }
 
-.auth-divider span {
-    font-size: 13px;
-    color: #aaa;
-}
-
+/* SOCIAL */
 .social-login {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  gap: 10px;
 }
 
 .social-login button {
-    flex: 1;
-    padding: 12px;
-    border: 1.5px solid #e8e8e8;
-    border-radius: 10px;
-    background: #fff;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
 }
 
 .social-login button:hover {
-    border-color: #8d2123;
+  border-color: #8d2123;
 }
 
-/* ============================================
-   REGISTER LINK
-============================================ */
-
+/* REGISTER */
 .register-link {
-    text-align: center;
-    font-size: 14px;
-    margin-top: 18px;
+  text-align: center;
+  margin-top: 18px;
 }
 
 .register-link a {
-    color: #8d2123;
-    font-weight: 700;
-    text-decoration: none;
+  color: #8d2123;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-/* ============================================
-   RESPONSIVE
-============================================ */
-
+/* RESPONSIVE */
 @media (max-width: 480px) {
-    .login-container {
-        padding: 28px 20px;
-    }
+  .login-container {
+    padding: 25px 18px;
+  }
 
-    .social-login {
-        flex-direction: column;
-    }
+  .social-login {
+    flex-direction: column;
+  }
 
-    .login-options {
-        flex-direction: column;
-        gap: 8px;
-    }
+  .login-options {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
 }
