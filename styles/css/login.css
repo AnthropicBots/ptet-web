@@ -95,23 +95,13 @@
     font-size: 14px;
     color: #1a1a1a;
     outline: none;
-    font-family: inherit;
-}
-
-.input-group input::placeholder {
-    color: #bbb;
-    font-size: 14px;
 }
 
 /* ============================================
-   PASSWORD TOGGLE - EYE ICON
+   PASSWORD TOGGLE
 ============================================ */
 
 .password-group {
-    padding-right: 4px;
-}
-
-.password-group input {
     padding-right: 4px;
 }
 
@@ -123,12 +113,10 @@
     border: none;
     color: #bbb;
     cursor: pointer;
-    padding: 0;
-    border-radius: 50%;
-    transition: all 0.25s ease;
-    flex-shrink: 0;
     width: 36px;
     height: 36px;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
 }
 
 .toggle-password:hover {
@@ -143,11 +131,9 @@
 
 .toggle-password i {
     font-size: 17px;
-    width: 17px;
-    text-align: center;
 }
 
-/* Icon Toggle - CSS handles visibility */
+/* Eye toggle */
 .toggle-password .fa-eye-slash {
     display: none;
 }
@@ -158,10 +144,6 @@
 
 .toggle-password.visible .fa-eye-slash {
     display: inline-block;
-}
-
-.toggle-password.visible {
-    color: #8d2123;
 }
 
 /* ============================================
@@ -192,14 +174,6 @@
     box-shadow: 0 6px 20px rgba(141, 33, 35, 0.25);
 }
 
-.login-submit:active {
-    transform: translateY(0);
-}
-
-.login-submit i {
-    font-size: 15px;
-}
-
 /* ============================================
    OPTIONS & LINKS
 ============================================ */
@@ -217,25 +191,16 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    cursor: pointer;
 }
 
-.remember-me input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
+.remember-me input {
     accent-color: #8d2123;
-    cursor: pointer;
 }
 
 .forgot-link {
     color: #8d2123;
     text-decoration: none;
     font-weight: 600;
-    font-size: 13px;
-}
-
-.forgot-link:hover {
-    text-decoration: underline;
 }
 
 .register-link {
@@ -249,10 +214,6 @@
     color: #8d2123;
     font-weight: 700;
     text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
 }
 
 /* ============================================
@@ -299,7 +260,6 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #333;
 }
 
 .social-login button:hover {
@@ -317,6 +277,12 @@
     font-size: 17px;
 }
 
+/* Google icon fix */
+.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
 /* ============================================
    RESPONSIVE
 ============================================ */
@@ -328,36 +294,6 @@
 
     .login-container {
         padding: 28px 20px 24px;
-        border-radius: 14px;
-    }
-
-    .login-container h2 {
-        font-size: 22px;
-    }
-
-    .login-icon i {
-        font-size: 32px;
-        width: 60px;
-        height: 60px;
-        padding: 14px;
-    }
-
-    .input-group {
-        padding: 0 12px;
-    }
-
-    .input-group input {
-        padding: 11px 8px;
-        font-size: 14px;
-    }
-
-    .toggle-password {
-        width: 34px;
-        height: 34px;
-    }
-
-    .toggle-password i {
-        font-size: 15px;
     }
 
     .login-options {
