@@ -80,7 +80,6 @@
     font-size: 15px;
     width: 18px;
     text-align: center;
-    flex-shrink: 0;
 }
 
 .input-group:focus-within i {
@@ -95,24 +94,14 @@
     font-size: 14px;
     color: #1a1a1a;
     outline: none;
-    font-family: inherit;
-}
-
-.input-group input::placeholder {
-    color: #bbb;
-    font-size: 14px;
 }
 
 /* ============================================
-   PASSWORD TOGGLE - EYE ICON
+   PASSWORD TOGGLE (FINAL CLEAN VERSION)
 ============================================ */
 
 .password-group {
-    padding-right: 4px;
-}
-
-.password-group input {
-    padding-right: 4px;
+    padding-right: 6px;
 }
 
 .toggle-password {
@@ -121,19 +110,16 @@
     justify-content: center;
     background: transparent;
     border: none;
-    color: #bbb;
     cursor: pointer;
-    padding: 0;
-    border-radius: 50%;
-    transition: all 0.25s ease;
-    flex-shrink: 0;
     width: 36px;
     height: 36px;
+    color: #bbb;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
 }
 
 .toggle-password:hover {
     color: #8d2123;
-    background: rgba(141, 33, 35, 0.06);
 }
 
 .toggle-password:focus {
@@ -141,13 +127,7 @@
     outline-offset: 2px;
 }
 
-.toggle-password i {
-    font-size: 17px;
-    width: 17px;
-    text-align: center;
-}
-
-/* Icon Toggle - CSS handles visibility */
+/* Icon switching */
 .toggle-password .fa-eye-slash {
     display: none;
 }
@@ -158,10 +138,6 @@
 
 .toggle-password.visible .fa-eye-slash {
     display: inline-block;
-}
-
-.toggle-password.visible {
-    color: #8d2123;
 }
 
 /* ============================================
@@ -189,81 +165,44 @@
 .login-submit:hover {
     background: #6a181b;
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(141, 33, 35, 0.25);
-}
-
-.login-submit:active {
-    transform: translateY(0);
-}
-
-.login-submit i {
-    font-size: 15px;
 }
 
 /* ============================================
-   OPTIONS & LINKS
+   OPTIONS
 ============================================ */
 
 .login-options {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     font-size: 13px;
-    color: #555;
-    margin: 2px 0 18px 0;
+    margin: 10px 0 18px;
 }
 
 .remember-me {
     display: flex;
     align-items: center;
     gap: 8px;
-    cursor: pointer;
 }
 
-.remember-me input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
+.remember-me input {
     accent-color: #8d2123;
-    cursor: pointer;
 }
 
 .forgot-link {
     color: #8d2123;
-    text-decoration: none;
     font-weight: 600;
-    font-size: 13px;
-}
-
-.forgot-link:hover {
-    text-decoration: underline;
-}
-
-.register-link {
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-    margin-top: 18px;
-}
-
-.register-link a {
-    color: #8d2123;
-    font-weight: 700;
     text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
 }
 
 /* ============================================
-   DIVIDER & SOCIAL LOGIN
+   SOCIAL LOGIN
 ============================================ */
 
 .auth-divider {
     display: flex;
     align-items: center;
-    margin: 20px 0 16px;
-    gap: 14px;
+    margin: 20px 0;
+    gap: 10px;
 }
 
 .auth-divider::before,
@@ -277,7 +216,6 @@
 .auth-divider span {
     font-size: 13px;
     color: #aaa;
-    white-space: nowrap;
 }
 
 .social-login {
@@ -287,34 +225,33 @@
 
 .social-login button {
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
     padding: 12px;
     border: 1.5px solid #e8e8e8;
     border-radius: 10px;
-    background: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
+    background: #fff;
     cursor: pointer;
-    transition: all 0.3s ease;
-    color: #333;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 .social-login button:hover {
     border-color: #8d2123;
-    background: #faf5f5;
 }
 
-.social-login .google-login i {
-    color: #ea4335;
-    font-size: 17px;
+/* ============================================
+   REGISTER LINK
+============================================ */
+
+.register-link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 18px;
 }
 
-.social-login .github-login i {
-    color: #333;
-    font-size: 17px;
+.register-link a {
+    color: #8d2123;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 /* ============================================
@@ -322,52 +259,16 @@
 ============================================ */
 
 @media (max-width: 480px) {
-    .login-page {
-        padding: 100px 16px 60px;
-    }
-
     .login-container {
-        padding: 28px 20px 24px;
-        border-radius: 14px;
+        padding: 28px 20px;
     }
 
-    .login-container h2 {
-        font-size: 22px;
-    }
-
-    .login-icon i {
-        font-size: 32px;
-        width: 60px;
-        height: 60px;
-        padding: 14px;
-    }
-
-    .input-group {
-        padding: 0 12px;
-    }
-
-    .input-group input {
-        padding: 11px 8px;
-        font-size: 14px;
-    }
-
-    .toggle-password {
-        width: 34px;
-        height: 34px;
-    }
-
-    .toggle-password i {
-        font-size: 15px;
+    .social-login {
+        flex-direction: column;
     }
 
     .login-options {
         flex-direction: column;
         gap: 8px;
-        align-items: flex-start;
-    }
-
-    .social-login {
-        flex-direction: column;
-        gap: 10px;
     }
 }

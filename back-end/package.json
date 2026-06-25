@@ -16,10 +16,12 @@
   "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "helmet": "^8.2.0",
+    "ioredis": "^5.11.1",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.11.0",
     "pg": "^8.21.0",
