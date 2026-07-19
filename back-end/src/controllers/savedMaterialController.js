@@ -1,32 +1,111 @@
-const { SavedMaterial, StudyMaterial } = require('../models');
-const response = require('../utils/response');
+const {
+  SavedMaterial,
+  StudyMaterial,
+  sequelize,
+} = require("../models");
+
+const {
+  UniqueConstraintError,
+} = require("sequelize");
+
+const response = require("../utils/response");
 
 exports.toggleSave = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+
   try {
-    const userId = Number(req.params.id);
-    const materialId = req.params.materialId ? Number(req.params.materialId) : undefined;
 
-    if (Number(req.user.id) !== userId && req.user.role !== 'admin') {
-      return response.error(res, 'Unauthorized to modify saved materials for this user', 403);
+    const userId = req.params.id;
+    const materialId = req.params.materialId;
+
+    if (
+      req.user.id !== userId &&
+      req.user.role !== "admin"
+    ) {
+      await transaction.rollback();
+
+      return response.error(
+        res,
+        "Unauthorized to modify saved materials for this user",
+        403
+      );
     }
 
-    const material = await StudyMaterial.findByPk(materialId);
+    const material =
+      await StudyMaterial.findByPk(
+        materialId,
+        { transaction }
+      );
+
     if (!material) {
-      return response.error(res, 'Material not found', 404);
+
+      await transaction.rollback();
+
+      return response.error(
+        res,
+        "Material not found",
+        404
+      );
     }
 
-    const existing = await SavedMaterial.findOne({
-      where: { user_id: userId, material_id: materialId },
-    });
+    const [savedMaterial, created] =
+      await SavedMaterial.findOrCreate({
 
-    if (existing) {
-      await existing.destroy();
-      return response.success(res, null, 'Material unsaved (removed from bookmarks)');
+        where: {
+          user_id: userId,
+          material_id: materialId,
+        },
+
+        defaults: {
+          user_id: userId,
+          material_id: materialId,
+        },
+
+        transaction,
+      });
+
+    if (!created) {
+
+      await savedMaterial.destroy({
+        transaction,
+      });
+
+      await transaction.commit();
+
+      return response.success(
+        res,
+        {
+          saved: false,
+        },
+        "Material unsaved (removed from bookmarks)"
+      );
     }
 
-    await SavedMaterial.create({ user_id: userId, material_id: materialId });
-    return response.success(res, null, 'Material saved (added to bookmarks)');
+    await transaction.commit();
+
+    return response.success(
+      res,
+      {
+        saved: true,
+      },
+      "Material saved (added to bookmarks)"
+    );
+
   } catch (err) {
+
+    await transaction.rollback();
+
+    if (err instanceof UniqueConstraintError) {
+
+      return response.success(
+        res,
+        {
+          saved: true,
+        },
+        "Material is already saved"
+      );
+    }
+
     next(err);
   }
 };
@@ -34,7 +113,7 @@ exports.toggleSave = async (req, res, next) => {
 exports.getSavedMaterials = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
-    
+
     if (Number(req.user.id) !== userId && req.user.role !== 'admin') {
       return response.error(res, 'Unauthorized to view saved materials for this user', 403);
     }
