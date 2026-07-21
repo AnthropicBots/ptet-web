@@ -1,6 +1,96 @@
 /* ===== LEGAL PAGES — legal.css ===== */
 /* Shared styles for Privacy Policy, Terms & Conditions, Cookie Policy, Disclaimer */
 
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.navbar-wrapper {
+    background: var(--bg-navbar);
+    border-bottom: 1px solid var(--border-card);
+    box-shadow: 0 2px 12px var(--shadow-card);
+}
+
+.navbar-container {
+    background: transparent;
+}
+
+.logo-text {
+    color: var(--text-logo);
+}
+
+#navbar li a {
+    color: var(--text-nav-link);
+}
+
+.dropdown-menu {
+    background: var(--bg-dropdown);
+    box-shadow: 0 15px 30px var(--shadow-card-hover);
+}
+
+.dropdown-menu li a {
+    color: var(--text-nav-link);
+}
+
+.dropdown-menu li a:hover {
+    background: var(--bg-dropdown-hover);
+}
+
+.login-btn {
+    background: var(--bg-login-btn);
+    color: var(--text-login-btn);
+    box-shadow: 0 3px 10px var(--shadow-card);
+}
+
+.footer-wrapper {
+    background: var(--bg-footer);
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-footer);
+}
+
+.footer-logo {
+    color: var(--text-logo);
+}
+
+.footer-desc {
+    color: var(--text-muted);
+}
+
+.social-icons a {
+    background: var(--bg-social-icon);
+    color: var(--text-social-icon);
+    box-shadow: 0 3px 8px var(--shadow-card);
+}
+
+.footer-col h4 {
+    color: var(--text-footer-col-title);
+}
+
+.footer-col ul li a {
+    color: var(--text-footer-link);
+}
+
+.newsletter-form input {
+    background: var(--bg-input);
+    border: 1px solid var(--border-newsletter);
+    color: var(--text-primary);
+}
+
+.newsletter-form input::placeholder {
+    color: var(--text-lighter);
+}
+
+.newsletter-form button {
+    background: var(--accent);
+    color: var(--text-on-accent);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-footer-bottom);
+    color: var(--text-light);
+}
+
 /* ── Hero ── */
 .legal-hero {
     background: linear-gradient(135deg, var(--bg-secondary, #f7f7f7), var(--bg-primary, #fff));
@@ -165,10 +255,10 @@
 .legal-section h2 {
     font-size: clamp(1.25rem, 2.5vw, 1.6rem);
     font-weight: 700;
-    color: #000000;
+    color: var(--text-primary);
     margin: 0 0 16px;
     padding-bottom: 10px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid var(--border-card);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -190,7 +280,7 @@
 .legal-section h3 {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--text-primary);
     margin: 24px 0 8px;
 }
 
@@ -321,7 +411,7 @@
     align-items: center;
     gap: 8px;
     background: var(--accent, #8d2123);
-    color: white;
+    color: var(--text-on-accent);
     text-decoration: none;
     padding: 11px 24px;
     border-radius: 8px;

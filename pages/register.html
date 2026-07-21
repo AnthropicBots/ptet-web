@@ -1,96 +1,89 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Register | PTE HUB</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="../styles/css/style.css" />
-    <link rel="stylesheet" href="../styles/css/navbar.css" />
-    <link rel="stylesheet" href="../styles/css/footer.css" />
-    <link rel="stylesheet" href="../styles/css/login.css" />
-    <link rel="stylesheet" href="../styles/css/theme.css" />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <script src="../scripts/js/theme.js"></script>
-  </head>
+  <title>Register | PTE HUB</title>
 
-  <body>
-    <header id="header">
-      <div id="navbar-placeholder"></div>
-    </header>
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="../styles/css/style.css" />
+  <link rel="stylesheet" href="../styles/css/navbar.css" />
+  <link rel="stylesheet" href="../styles/css/footer.css" />
+  <link rel="stylesheet" href="../styles/css/login.css" />
+  <link rel="stylesheet" href="../styles/css/theme.css" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <script src="../scripts/js/theme.js"></script>
+</head>
 
-    <!-- Register Section -->
-    <section class="login-page">
-      <div class="login-container">
-        <h2>Create Account</h2>
-        <p class="login-subtitle">Join PTE HUB and start your preparation</p>
+<body>
+  <header id="header">
+    <div id="navbar-placeholder"></div>
+  </header>
 
-        <form class="login-form" id="registerForm">
-          <!-- Full Name -->
-          <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text" id="regName" placeholder="Full Name" required />
-          </div>
+  <!-- Toast Container for Notifications -->
+  <div id="toast-container"></div>
 
-          <!-- Email -->
-          <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input
-              type="email"
-              id="regEmail"
-              placeholder="Email Address"
-              required
-            />
-          </div>
+  <!-- Register Section -->
+  <section class="login-page">
+    <div class="login-container">
+      <h2>Create Account</h2>
+      <p class="login-subtitle">Join PTE HUB and start your preparation</p>
 
-          <!-- Password -->
-          <div class="input-group password-group">
-            <i class="fas fa-lock"></i>
+      <form class="login-form" id="registerForm">
+        <!-- Full Name -->
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="regName" placeholder="Full Name" required />
+        </div>
 
-            <input
-              type="password"
-              id="regPassword"
-              placeholder="Password"
-              required
-            />
+        <!-- Email -->
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="regEmail" placeholder="Email Address" required />
+        </div>
 
-            <i class="fas fa-eye toggle-password"></i>
-          </div>
+        <!-- Password -->
+        <div class="input-group password-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="regPassword" placeholder="Enter Password" required />
+          <i class="fas fa-eye toggle-password"></i>
+        </div>
 
-          <!-- Confirm Password -->
-          <div class="input-group password-group">
-            <i class="fas fa-lock"></i>
+        <!-- Confirm Password -->
+        <div class="input-group password-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="regConfirm" placeholder="Confirm Password" required />
+          <i class="fas fa-eye toggle-password"></i>
+        </div>
 
-            <input
-              type="password"
-              id="regConfirm"
-              placeholder="Confirm Password"
-              required
-            />
+        <!-- Password Strength Indicator -->
+        <div id="passwordStrength"></div>
 
-            <i class="fas fa-eye toggle-password"></i>
-          </div>
-          <!-- Register Button -->
-          <button type="submit" class="login-submit">Create Account</button>
+        <!-- Register Button with Loading State -->
+        <button type="submit" class="login-submit" id="registerBtn">
+          <span id="registerBtnText">Create Account</span>
+          <span id="registerBtnLoader" style="display: none">
+            <i class="fas fa-spinner fa-spin"></i> Creating account...
+          </span>
+        </button>
 
-          <!-- Login Redirect -->
-          <p class="register-link">
-            Already have an account?
-            <a href="login.html">Login</a>
-          </p>
-        </form>
-      </div>
-    </section>
-    <div id="footer-placeholder"></div>
+        <!-- Login Redirect -->
+        <p class="register-link">
+          Already have an account?
+          <a href="login.html">Login</a>
+        </p>
+      </form>
+    </div>
+  </section>
 
-    <script src="../scripts/js/auth.js"></script>
-    <script src="../scripts/js/navbar.js"></script>
-    <script src="../scripts/js/footer.js"></script>
-  </body>
+  <div id="footer-placeholder"></div>
+
+  <script type="module" src="../scripts/js/firebase-auth.js"></script>
+  <script src="../scripts/js/navbar.js"></script>
+  <script src="../scripts/js/footer.js"></script>
+</body>
+
 </html>

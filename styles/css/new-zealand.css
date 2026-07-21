@@ -868,53 +868,90 @@ section[id] {
 
 .fact-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-card);
-    border-top: 4px solid var(--accent);
+    /* Clean light/white background */
     color: var(--text-primary);
+    /* Theme-aware text color */
     padding: 30px 20px;
-    border-radius: 12px;
+    border-radius: 16px;
     text-align: center;
-    box-shadow: var(--shadow-soft);
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid var(--border-card);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.35s ease;
     position: relative;
+    overflow: hidden;
+}
+
+/* Premium Red Accent Border on Top */
+.fact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), #b82e2e);
+    border-radius: 16px 16px 0 0;
+}
+
+/* Subtle Shine Animation on Hover */
+.fact-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(141, 33, 35, 0.06), transparent);
+    transition: 0.5s ease;
+}
+
+.fact-card:hover::after {
+    left: 100%;
 }
 
 .fact-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lift);
-    border-color: var(--border-card-hover);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent);
 }
 
 .fact-icon {
-    width: 50px;
-    height: 50px;
-    background: rgba(141, 33, 35, 0.08);
-    color: var(--accent);
+    width: 54px;
+    height: 54px;
+    background: rgba(141, 33, 35, 0.1);
+    border: 1.5px solid rgba(141, 33, 35, 0.2);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 22px;
-    margin: 0 auto 15px;
+    color: var(--accent);
+    margin: 0 auto 16px;
     transition: all 0.3s ease;
 }
 
+/* Icon turns solid red with white symbol on hover */
 .fact-card:hover .fact-icon {
     background: var(--accent);
-    color: #ffffff;
-    transform: scale(1.05);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(141, 33, 35, 0.35);
 }
 
 .fact-card h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 14px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
 }
 
 .fact-card p {
-    font-size: 14px;
-    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.5;
 }
 
 

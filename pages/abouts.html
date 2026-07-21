@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About PTE HUB | Overview</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+
+    <!-- Global Stylesheets -->
+    <link rel="stylesheet" href="../styles/css/style.css" />
+    <link rel="stylesheet" href="../styles/css/navbar.css" />
+    <link rel="stylesheet" href="../styles/css/footer.css" />
+    <link rel="stylesheet" href="../styles/css/auth-popup.css" />
+    <link rel="stylesheet" href="../styles/css/theme.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Theme initialisation -->
+    <script src="../scripts/js/theme.js"></script>
+
+    <style>
+        /* ===== HERO ===== */
+        .abouts-hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--bg-about-hero-start, #f7f7f7), var(--bg-about-hero-end, #ffffff));
+            padding: clamp(110px, 12vw, 140px) 20px clamp(56px, 8vw, 80px);
+            text-align: center;
+            border-bottom: 1px solid var(--border-card, rgba(0, 0, 0, 0.08));
+            overflow: hidden;
+        }
+
+        .abouts-hero::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(141, 33, 35, 0.06);
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .abouts-hero .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .abouts-hero .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(141, 33, 35, 0.08);
+            color: var(--accent, #8d2123);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            border: 1px solid rgba(141, 33, 35, 0.15);
+        }
+
+        .abouts-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: var(--text-primary, #1a1a1a);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .abouts-hero p {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: var(--text-muted, #555);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== QUICK NAV ===== */
+        .abouts-quick-nav {
+            padding: 30px 20px;
+            background: var(--bg-card, #fff);
+            border-bottom: 1px solid var(--border-card, rgba(0, 0, 0, 0.06));
+            position: sticky;
+            top: 72px;
+            z-index: 100;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .abouts-quick-nav .nav-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+        }
+
+        .abouts-quick-nav .nav-list a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary, #444);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 30px;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+        }
+
+        .abouts-quick-nav .nav-list a:hover,
+        .abouts-quick-nav .nav-list a.active {
+            color: var(--accent, #8d2123);
+            background: rgba(141, 33, 35, 0.06);
+            border-color: rgba(141, 33, 35, 0.12);
+        }
+
+        .abouts-quick-nav .nav-list a i {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* ===== DETAIL SECTIONS ===== */
+        .abouts-detail {
+            padding: clamp(56px, 8vw, 96px) 20px;
+            background: var(--bg-primary, #ffffff);
+            border-bottom: 1px solid var(--border-card, rgba(0, 0, 0, 0.06));
+        }
+
+        .abouts-detail:last-of-type {
+            border-bottom: none;
+        }
+
+        .abouts-detail .detail-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .abouts-detail .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .abouts-detail .detail-header .icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(141, 33, 35, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--accent, #8d2123);
+            flex-shrink: 0;
+        }
+
+        .abouts-detail .detail-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--text-primary, #1a1a1a);
+            margin: 0;
+        }
+
+        .abouts-detail .detail-content {
+            font-size: 15.5px;
+            line-height: 1.8;
+            color: var(--text-secondary, #444);
+        }
+
+        .abouts-detail .detail-content p {
+            margin: 0 0 16px 0;
+        }
+
+        .abouts-detail .detail-content ul {
+            padding-left: 24px;
+            margin: 12px 0 18px 0;
+        }
+
+        .abouts-detail .detail-content ul li {
+            margin-bottom: 8px;
+            list-style: disc;
+        }
+
+        .abouts-detail .detail-content .highlight-box {
+            background: var(--bg-secondary, #f7f7f7);
+            border-left: 4px solid var(--accent, #8d2123);
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+
+        .abouts-detail .detail-content .highlight-box p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .abouts-detail .detail-footer {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .abouts-detail .detail-footer .learn-more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--accent, #8d2123);
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: 1.5px solid var(--accent, #8d2123);
+            transition: all 0.25s ease;
+        }
+
+        .abouts-detail .detail-footer .learn-more-link:hover {
+            background: var(--accent, #8d2123);
+            color: #fff;
+            transform: translateX(4px);
+        }
+
+        .abouts-detail .detail-footer .learn-more-link i {
+            font-size: 12px;
+            transition: transform 0.25s ease;
+        }
+
+        .abouts-detail .detail-footer .learn-more-link:hover i {
+            transform: translateX(4px);
+        }
+
+        .abouts-detail .detail-footer .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .abouts-detail .detail-footer .meta-tags .tag {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 14px;
+            border-radius: 30px;
+            background: rgba(141, 33, 35, 0.06);
+            color: var(--accent, #8d2123);
+            border: 1px solid rgba(141, 33, 35, 0.08);
+        }
+
+        /* ===== CTA BANNER ===== */
+        .abouts-cta {
+            padding: clamp(56px, 7vw, 80px) 20px;
+            background: linear-gradient(135deg, var(--accent, #8d2123), #6f1a1c);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .abouts-cta::before {
+            content: "";
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            filter: blur(70px);
+        }
+
+        .abouts-cta .cta-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .abouts-cta h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .abouts-cta p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .abouts-cta .cta-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+
+        .abouts-cta .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .abouts-cta .cta-btn.primary-white {
+            background: #fff;
+            color: var(--accent, #8d2123);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .abouts-cta .cta-btn.primary-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+            background: #f5f5f5;
+        }
+
+        .abouts-cta .cta-btn.secondary-outline {
+            background: transparent;
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .abouts-cta .cta-btn.secondary-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .abouts-quick-nav {
+                top: 60px;
+                padding: 16px 12px;
+            }
+
+            .abouts-quick-nav .nav-list {
+                gap: 8px 14px;
+            }
+
+            .abouts-quick-nav .nav-list a {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
+
+            .abouts-detail .detail-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .abouts-detail .detail-footer .meta-tags {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .abouts-cta .cta-btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .abouts-cta .cta-btn {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+
+            .abouts-detail .detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .abouts-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .abouts-hero p {
+                font-size: 15px;
+            }
+
+            .abouts-quick-nav .nav-list a {
+                font-size: 11px;
+                padding: 3px 8px;
+            }
+        }
+
+        /* Scroll offset for fixed navbar + sticky nav */
+        section[id] {
+            scroll-margin-top: 140px;
+        }
+
+        @media (max-width: 768px) {
+            section[id] {
+                scroll-margin-top: 120px;
+            }
+        }
+        
+#section-contact .contact-card {
+    background: var(--bg-card, #ffffff);
+    border-radius: 20px;
+    padding: 45px 45px 40px;
+    box-shadow: var(--shadow-soft, 0 8px 24px rgba(0, 0, 0, 0.06));
+    border: 1px solid var(--border-card, rgba(0, 0, 0, 0.05));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* ❌ Dark red background hata diya, ab card clean white dikhega */
+}
+
+#section-contact .contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift, 0 12px 30px rgba(0, 0, 0, 0.08));
+    border-color: var(--accent, #8d2123);
+}
+
+/* ✅ Ensure text inside the card is clearly visible */
+#section-contact .contact-card .detail-content {
+    color: var(--text-primary, #222);
+}
+
+#section-contact .contact-card .detail-header {
+    margin-bottom: 24px;
+}
+
+#section-contact .contact-card .detail-content ul li a {
+    color: var(--accent, #8d2123);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#section-contact .contact-card .detail-content ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #section-contact .contact-card {
+        padding: 28px 20px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER (NAVBAR) ================= -->
+    <header id="header">
+        <div id="navbar-placeholder"></div>
+    </header>
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+        <section class="abouts-hero">
+            <div class="hero-inner">
+                <div class="hero-badge">
+                    <i class="fas fa-compass"></i> Your PTE Resource Hub
+                </div>
+                <h1>Everything You Need to Know</h1>
+                <p>
+                    A consolidated overview of PTE Academic — from test format and partner research
+                    to university acceptance, FAQs, and how to reach us. Dive into any topic or
+                    explore the full pages for deeper insights.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= QUICK NAVIGATION ================= -->
+        <nav class="abouts-quick-nav" id="quickNav">
+            <ul class="nav-list">
+                <li><a href="#section-about" class="active"><i class="fas fa-info-circle"></i> About PTE</a></li>
+                <li><a href="#section-partners"><i class="fas fa-handshake"></i> Partners</a></li>
+                <li><a href="#section-universities"><i class="fas fa-university"></i> Universities</a></li>
+                <li><a href="#section-faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="#section-contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- ================= SECTION: ABOUT PTE ================= -->
+        <section class="abouts-detail" id="section-about">
+            <div class="detail-container">
+                <div class="detail-header">
+                    <div class="icon-box"><i class="fas fa-globe"></i></div>
+                    <h2>About PTE Academic</h2>
+                </div>
+                <div class="detail-content">
+                    <p>
+                        <strong>PTE Academic</strong> is a fully computer-based English proficiency test designed to assess
+                        real-world communication skills using advanced AI-driven scoring. Trusted by thousands of
+                        institutions and governments worldwide, it evaluates your ability to understand and use English
+                        in academic and everyday contexts.
+                    </p>
+                    <p>
+                        The test is divided into three main parts: <strong>Speaking &amp; Writing</strong> (54–67 minutes),
+                        <strong>Reading</strong> (29–30 minutes), and <strong>Listening</strong> (30–43 minutes). All
+                        tasks are completed on a computer, and results are typically available within <strong>48 hours</strong>.
+                    </p>
+                    <div class="highlight-box">
+                        <p><i class="fas fa-robot" style="color: var(--accent, #8d2123); margin-right: 10px;"></i>
+                            <strong>AI-Powered Scoring:</strong> PTE uses automated scoring to ensure fairness, accuracy,
+                            and consistency, eliminating human bias and delivering reliable results for test-takers globally.
+                        </p>
+                    </div>
+                    <ul>
+                        <li><strong>3500+</strong> institutions accept PTE Academic.</li>
+                        <li><strong>48 hours</strong> average turnaround time for results.</li>
+                        <li><strong>100% digital</strong> – no paper-based testing.</li>
+                        <li>Recognised by immigration authorities in Australia, Canada, New Zealand, and the UK.</li>
+                    </ul>
+                </div>
+                <div class="detail-footer">
+                    <a href="about.html" class="learn-more-link">
+                        Read Full Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <div class="meta-tags">
+                        <span class="tag"><i class="fas fa-clock"></i> Fast results</span>
+                        <span class="tag"><i class="fas fa-microchip"></i> AI scoring</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION: PARTNERS ================= -->
+        <section class="abouts-detail" id="section-partners" style="background: var(--bg-secondary, #f7f7f7);">
+            <div class="detail-container">
+                <div class="detail-header">
+                    <div class="icon-box"><i class="fas fa-handshake"></i></div>
+                    <h2>Partners &amp; Research</h2>
+                </div>
+                <div class="detail-content">
+                    <p>
+                        PTE HUB collaborates with leading academic institutions, research laboratories, and government
+                        bodies to advance the science of language assessment. Our partners help us refine AI scoring
+                        models, conduct validity studies, and ensure that PTE remains a fair and accurate measure of
+                        English proficiency.
+                    </p>
+                    <p>
+                        Key research areas include <strong>acoustic modelling across accents</strong>,
+                        <strong>bias elimination in automated scoring</strong>, and
+                        <strong>concordance studies</strong> mapping PTE scores to other tests like IELTS and TOEFL.
+                        Our white papers and technical manuals are available for download, providing transparency into
+                        the test's development and validation.
+                    </p>
+                    <div class="highlight-box">
+                        <p><i class="fas fa-flask" style="color: var(--accent, #8d2123); margin-right: 10px;"></i>
+                            <strong>Future Initiatives:</strong> We're exploring adaptive testing, LLM-assisted grammar
+                            diagnostics, and predictive scoring reports to make preparation even more personalised.
+                        </p>
+                    </div>
+                    <ul>
+                        <li>Collaborations with Stanford, Oxford, and Melbourne universities.</li>
+                        <li>Recognised by immigration authorities in Australia, Canada, and the UK.</li>
+                        <li>Ongoing research on assessment equity and fairness.</li>
+                    </ul>
+                </div>
+                <div class="detail-footer">
+                    <a href="partners.html" class="learn-more-link">
+                        Explore Partners &amp; Research <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <div class="meta-tags">
+                        <span class="tag"><i class="fas fa-file-pdf"></i> White papers</span>
+                        <span class="tag"><i class="fas fa-university"></i> Academic</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION: UNIVERSITIES ================= -->
+        <section class="abouts-detail" id="section-universities">
+            <div class="detail-container">
+                <div class="detail-header">
+                    <div class="icon-box"><i class="fas fa-university"></i></div>
+                    <h2>Universities Accepting PTE</h2>
+                </div>
+                <div class="detail-content">
+                    <p>
+                        PTE Academic is accepted by <strong>over 3,500 institutions worldwide</strong>, including
+                        top universities in Australia, Canada, the United Kingdom, New Zealand, and the United States.
+                        Whether you're applying for undergraduate, postgraduate, or doctoral programmes, PTE scores
+                        can help you meet English language requirements.
+                    </p>
+                    <p>
+                        Typical score requirements vary by institution and course. Most universities ask for a minimum
+                        overall score between <strong>50–65</strong> for undergraduate programmes and
+                        <strong>58–76</strong> for postgraduate study. Some elite institutions like Oxford, Cambridge,
+                        and the University of Toronto may require higher scores (65+). Always check the specific
+                        requirements of your chosen university.
+                    </p>
+                    <div class="highlight-box">
+                        <p><i class="fas fa-check-circle" style="color: var(--accent, #8d2123); margin-right: 10px;"></i>
+                            <strong>Quick filter:</strong> Our university directory lets you search by country and
+                            institution to find detailed admission information and PTE score expectations.
+                        </p>
+                    </div>
+                    <ul>
+                        <li><strong>Australia:</strong> All Group of Eight universities accept PTE.</li>
+                        <li><strong>Canada:</strong> U15 research universities, including UBC and McGill.</li>
+                        <li><strong>UK:</strong> Russell Group universities, including Oxford and Cambridge.</li>
+                        <li><strong>New Zealand:</strong> All eight universities accept PTE Academic.</li>
+                    </ul>
+                </div>
+                <div class="detail-footer">
+                    <a href="universities.html" class="learn-more-link">
+                        Browse All Universities <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <div class="meta-tags">
+                        <span class="tag">🇦🇺 Australia</span>
+                        <span class="tag">🇨🇦 Canada</span>
+                        <span class="tag">🇬🇧 UK</span>
+                        <span class="tag">🇳🇿 New Zealand</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION: FAQ ================= -->
+        <section class="abouts-detail" id="section-faq" style="background: var(--bg-secondary, #f7f7f7);">
+            <div class="detail-container">
+                <div class="detail-header">
+                    <div class="icon-box"><i class="fas fa-question-circle"></i></div>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="detail-content">
+                    <p>
+                        Here are answers to some of the most common questions about PTE Academic. For a complete list,
+                        visit our dedicated FAQ page.
+                    </p>
+                    <ul>
+                        <li><strong>What is the test duration?</strong> The total test time is approximately 2 hours.</li>
+                        <li><strong>How soon are results available?</strong> Typically within 48 hours of taking the test.</li>
+                        <li><strong>Is PTE easier than IELTS?</strong> It depends on your strengths; PTE is computer-based
+                            and uses AI scoring, which some find more predictable.</li>
+                        <li><strong>What is the scoring range?</strong> Scores range from 10 to 90, with increments of 1.</li>
+                        <li><strong>Can I retake the test?</strong> Yes, you can retake as many times as you wish, but you
+                            must wait for your results before rebooking.</li>
+                        <li><strong>How long are scores valid?</strong> PTE scores are valid for 2 years from the test date.</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <p><i class="fas fa-lightbulb" style="color: var(--accent, #8d2123); margin-right: 10px;"></i>
+                            <strong>Preparation tip:</strong> Use our mock tests and study materials to familiarise yourself
+                            with the test format and improve your performance.
+                        </p>
+                    </div>
+                </div>
+                <div class="detail-footer">
+                    <a href="faq.html" class="learn-more-link">
+                        View All FAQs <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <div class="meta-tags">
+                        <span class="tag"><i class="fas fa-file-alt"></i> Test format</span>
+                        <span class="tag"><i class="fas fa-chart-line"></i> Scoring</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+       <!-- ================= SECTION: CONTACT ================= -->
+<section class="abouts-detail" id="section-contact">
+    <div class="detail-container">
+        <div class="contact-card">
+            <div class="detail-header">
+                <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                <h2>Get in Touch</h2>
+            </div>
+            <div class="detail-content">
+                <p>
+                    We're here to help! Whether you have questions about test centres, preparation resources,
+                    score reporting, or anything else related to PTE, our support team is ready to assist.
+                </p>
+                <p>
+                    You can reach us via email, phone, or visit our training centres. We aim to respond to all
+                    enquiries within 24 hours. For quick answers, check our FAQ page first — many common questions
+                    are already covered there.
+                </p>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:support@ptehub.com" style="color: var(--accent, #8d2123);">support@ptehub.com</a> or <a href="mailto:info@ptehub.com" style="color: var(--accent, #8d2123);">info@ptehub.com</a></li>
+                    <li><strong>Phone:</strong> +91 83025XXXXX (Helpdesk) or 1800-PTE-HUB (Toll Free)</li>
+                    <li><strong>Headquarters:</strong> PTE HUB Plaza, Sector 12, Jaipur, Rajasthan, 302015, India</li>
+                </ul>
+                <div class="highlight-box">
+                    <p><i class="fas fa-headset" style="color: var(--accent, #8d2123); margin-right: 10px;"></i>
+                        <strong>24/7 Support:</strong> Our team is available around the clock to ensure you get the
+                        help you need, whenever you need it.
+                    </p>
+                </div>
+            </div>
+            <div class="detail-footer">
+                <a href="contact.html" class="learn-more-link">
+                    Contact Us <i class="fas fa-arrow-right"></i>
+                </a>
+                <div class="meta-tags">
+                    <span class="tag"><i class="fas fa-phone-alt"></i> Phone</span>
+                    <span class="tag"><i class="fas fa-map-marker-alt"></i> Jaipur</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- ================= CTA BANNER ================= -->
+        <section class="abouts-cta">
+            <div class="cta-inner">
+                <h2>Ready to Dive Deeper?</h2>
+                <p>
+                    Explore each topic in full detail. Whether you're preparing for the test,
+                    researching universities, or looking for support — we've got you covered.
+                </p>
+                <div class="cta-btn-group">
+                    <a href="preparation.html" class="cta-btn primary-white">
+                        <i class="fas fa-rocket"></i> Start Preparing
+                    </a>
+                    <a href="universities.html" class="cta-btn secondary-outline">
+                        <i class="fas fa-search"></i> Find Universities
+                    </a>
+                    <a href="contact.html" class="cta-btn secondary-outline">
+                        <i class="fas fa-headset"></i> Get Help
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER & POPUP ================= -->
+    <div id="footer-placeholder"></div>
+    <div id="auth-popup-placeholder"></div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="../scripts/js/navbar.js"></script>
+    <script src="../scripts/js/footer.js"></script>
+    <script src="../scripts/js/script.js"></script>
+    <script src="../scripts/js/auth-popup.js"></script>
+
+    <script>
+        // ============================
+        // ACTIVE NAV HIGHLIGHT ON SCROLL
+        // ============================
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = [
+                document.getElementById('section-about'),
+                document.getElementById('section-partners'),
+                document.getElementById('section-universities'),
+                document.getElementById('section-faq'),
+                document.getElementById('section-contact')
+            ].filter(Boolean);
+
+            const navLinks = document.querySelectorAll('.abouts-quick-nav .nav-list a');
+
+            if (!sections.length || !navLinks.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                let activeId = null;
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activeId = entry.target.id;
+                    }
+                });
+
+                if (activeId) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + activeId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            }, {
+                rootMargin: '-30% 0px -50% 0px',
+                threshold: 0.3
+            });
+
+            sections.forEach(section => observer.observe(section));
+
+            // Smooth scroll for nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            const offset = 140;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

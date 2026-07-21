@@ -75,19 +75,19 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
-/* Heading – dark grey */
+/* Heading – white to contrast with image */
 .about-hero h1 {
     font-size: clamp(2rem, 5vw, 2.875rem);
     margin-bottom: 15px;
     font-weight: 700;
-    color: #111010;
+    color: #ffffff !important;
 }
 
-/* Subtitle */
+/* Subtitle – white to contrast with image */
 .about-hero p {
     font-size: 18px;
     line-height: 1.7;
-    color: #000000;
+    color: #ffffff !important;
 }
 
 /* Primary button remains red */
@@ -179,7 +179,7 @@
 /* subtitle */
 .about-hero p {
     font-size: 18px;
-    color: #555;
+    color: #ffffff !important;
     line-height: 1.7;
 }
 
@@ -344,8 +344,8 @@
     position: relative;
     padding: clamp(64px, 7vw, 90px) 20px;
 
-    /* ⚪ Changed to White Background */
-    background: #ffffff;
+    /* ⚪ Use theme variable for background */
+    background: var(--bg-card);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.04);
     /* Premium Drop Shadow */
 
@@ -432,14 +432,14 @@
     font-weight: 700;
     margin: 0 0 15px;
     letter-spacing: -0.5px;
-    color: #1a1a1a;
-    /* Dark Text */
+    color: var(--text-primary);
+    /* Theme Text */
 }
 
 .about-cta p {
     font-size: clamp(1rem, 1.5vw, 1.15rem);
-    color: #555555;
-    /* Muted Grey Text */
+    color: var(--text-muted);
+    /* Theme Muted Text */
     max-width: 600px;
     margin: 0 0 25px;
     line-height: 1.6;
@@ -856,6 +856,16 @@
 .audience-link {
     display: inline-block;
     margin-top: 15px;
+    font-size: 14px;
+    color: #8d2123;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.audience-link-student {
+    display: inline-block;
+    margin-top: 0px;
     font-size: 14px;
     color: #8d2123;
     text-decoration: none;

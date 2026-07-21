@@ -512,6 +512,7 @@ section[id] {
 
 .intake-item {
     display: flex;
+    flex-direction: column;
     gap: 20px;
     background: var(--bg-card);
     padding: 25px;
@@ -529,18 +530,23 @@ section[id] {
 .intake-month {
     background: var(--accent);
     color: white;
-    min-width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-width: auto;
+    width: auto;
+    height: auto;
+    padding: 16px 20px;
     border-radius: 8px;
     font-weight: 700;
     font-size: 18px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .intake-details h3 {
+    text-align: center;
     font-size: 20px;
     color: var(--text-primary);
     margin-bottom: 8px;
@@ -548,6 +554,7 @@ section[id] {
 }
 
 .intake-details p {
+    text-align: center;
     font-size: 14px;
     color: var(--text-muted);
     line-height: 1.6;
@@ -1005,12 +1012,29 @@ section[id] {
     transition: 0.3s;
 }
 
-.faq-question i,
+/* .faq-question i,
 .faq-question span {
     font-size: 16px;
     color: var(--accent);
     transition: 0.3s;
+} */
+
+/* ✅ Fix: Restore the red circle and +/- icon */
+.faq-question span {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: 0.3s;
+    flex-shrink: 0;
+    font-weight: 400;
 }
+
 
 .faq-answer {
     max-height: 0;
@@ -1152,20 +1176,21 @@ section[id] {
         grid-template-columns: 1fr;
     }
 
-    .intakes-timeline {
-        grid-template-columns: 1fr;
-    }
+ .intakes-timeline {
+     grid-template-columns: 1fr;
+ }
 
-    .intake-item {
-        flex-direction: column;
-    }
+ .intake-item {
+     flex-direction: column;
+     align-items: flex-start;
+ }
 
-    .intake-month {
-        width: 100%;
-        min-width: unset;
-        height: auto;
-        padding: 12px;
-    }
+ .intake-month {
+     width: auto;
+     min-width: unset;
+     height: auto;
+     padding: 12px 16px;
+ }
 
     .cta-content h2 {
         font-size: 32px;

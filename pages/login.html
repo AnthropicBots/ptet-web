@@ -25,8 +25,10 @@
       <div id="navbar-placeholder"></div>
     </header>
 
-    <!-- Login Section -->
+    <!-- Toast Container for Notifications -->
+    <div id="toast-container"></div>
 
+    <!-- Login Section -->
     <section class="login-page">
       <div class="login-container">
         <h2>Welcome Back</h2>
@@ -34,7 +36,6 @@
 
         <form class="login-form" id="loginForm">
           <!-- Email -->
-
           <div class="input-group">
             <i class="fas fa-envelope"></i>
             <input
@@ -48,42 +49,40 @@
           <!-- Password -->
           <div class="input-group password-group">
             <i class="fas fa-lock"></i>
-
             <input
               type="password"
-              id="regPassword"
+              id="loginPassword"
               placeholder="Password"
               required
             />
-
             <i class="fas fa-eye toggle-password"></i>
           </div>
 
           <!-- Options -->
-
           <div class="login-options">
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" id="rememberMe" />
               Remember Me
             </label>
-
-            <a href="#">Forgot Password?</a>
+            <a href="forgot-password.html" id="forgotPasswordLink">Forgot Password?</a>
           </div>
 
           <!-- Login Button -->
-
-          <button type="submit" class="login-submit">Login</button>
+          <button type="submit" class="login-submit" id="loginBtn">
+            <span id="loginBtnText">Login</span>
+            <span id="loginBtnLoader" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> Logging in...
+            </span>
+          </button>
 
           <!-- Divider -->
-
           <div class="auth-divider">
             <span>or continue with</span>
           </div>
 
           <!-- Social Login -->
-
           <div class="social-login">
-            <button class="google-login">
+            <button class="google-login" id="googleLoginBtn">
               <img
                 src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
                 alt="Google"
@@ -91,15 +90,13 @@
               />
               Continue with Google
             </button>
-
-            <button class="github-login">
+            <button class="github-login" id="githubLoginBtn">
               <i class="fab fa-github"></i>
               Continue with GitHub
             </button>
           </div>
 
           <!-- Register Redirect -->
-
           <p class="register-link">
             Don't have an account?
             <a href="register.html">Register</a>
@@ -110,7 +107,7 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="../scripts/js/auth.js"></script>
+    <script type="module" src="../scripts/js/firebase-auth.js"></script>
     <script src="../scripts/js/navbar.js"></script>
     <script src="../scripts/js/footer.js"></script>
   </body>

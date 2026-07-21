@@ -1,21 +1,19 @@
 <header class="navbar-wrapper">
-    <div class="navbar-container">
-        <!-- Logo -->
-        <a href="/index.html" class="logo-text">
-            PTE HUB
-        </a>
+  <div class="navbar-container">
+    <!-- Logo -->
+    <a href="/index.html" class="logo-text"> PTE HUB </a>
 
-        <!-- Hamburger -->
-        <div id="hamburger" class="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
+    <!-- ✅ HAMBURGER ADDED HERE -->
+    <div id="hamburger" class="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
 
-        <!-- Navigation -->
-        <ul id="navbar">
-            <li><a href="./index.html">Home</a></li>
+    <!-- Navigation -->
+    <ul id="navbar">
+      <li><a href="../index.html">Home</a></li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                <a href="../pages/abouts.html" class="dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="../pages/about.html">About PTE</a></li>
                     <li><a href="../pages/partners.html">Partners & Research</a></li>
@@ -26,7 +24,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle">PTE Test <i class="fas fa-chevron-down"></i></a>
+                <a href="../pages/pte-test.html" class="dropdown-toggle">PTE Test <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="../pages/pte-test.html#what-is-pte">What is PTE</a></li>
                     <li><a href="../pages/pte-test.html#test-format">Test Format</a></li>
@@ -36,7 +34,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Preparation <i class="fas fa-chevron-down"></i></a>
+                <a href="../pages/preparation.html" class="dropdown-toggle">Preparation <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="../pages/preparation.html#practice-tests">Practice Tests</a></li>
                     <li><a href="../pages/preparation.html#study-materials">Study Materials</a></li>
@@ -45,53 +43,63 @@
                 </ul>
             </li>
 
-            <li class="dropdown">
-                <a href="destinations.html">Destinations <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="../pages/australia.html">Australia</a></li>
-                    <li><a href="../pages/canada.html">Canada</a></li>
-                    <li><a href="../pages/uk.html">UK</a></li>
-                    <li><a href="../pages/new-zealand.html">New Zealand</a></li>
-                </ul>
-            </li>
+      <!-- Destinations -->
+      <li class="dropdown">
+        <a href="../pages/destinations.html" class="dropdown-toggle"
+          >Destinations <i class="fas fa-chevron-down"></i
+        ></a>
+        <ul class="dropdown-menu">
+          <li><a href="../pages/australia.html">Australia</a></li>
+          <li><a href="../pages/canada.html">Canada</a></li>
+          <li><a href="../pages/uk.html">UK</a></li>
+          <li><a href="../pages/new-zealand.html">New Zealand</a></li>
         </ul>
+      </li>
+    </ul>
 
-        <!-- Right Actions -->
-        <div class="nav-actions">
-            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-            </button>
-            
-            <div id="auth-buttons">
-                <a href="../pages/login.html">
-                    <button class="login-btn">Login</button>
-                </a>
-                <a href="../pages/register.html">
-                    <button class="register-btn">Register</button>
-                </a>
-            </div>
+    <!-- Right Actions -->
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
+  <i class="fas fa-moon" id="moon-icon"></i>  
+  <i class="fas fa-sun" id="sun-icon"></i>    
+</button>
 
-            <div id="user-profile" class="user-profile">
-                <img 
-                    id="user-photo" 
-                    class="user-photo" 
-                    src="https://ui-avatars.com/api/?name=Zaiba&background=8d2123&color=fff&size=30" 
-                    alt="User profile photo"
-                >
-                <span id="user-name" class="user-name">Zaiba</span>
-                <i class="fas fa-chevron-down profile-arrow"></i>
-                <div class="profile-dropdown">
-                    <a href="/pages/profile.html">
-                        <i class="fas fa-user"></i>
-                        Profile
-                    </a>
-                    <button id="logout-btn" class="logout-btn">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Logout
-                    </button>
-                </div>
-            </div>
+      <!-- Login/Register -->
+      <div id="auth-buttons">
+        <a href="../pages/login.html">
+          <button class="login-btn">Login</button>
+        </a>
+
+        <a href="../pages/register.html">
+          <button class="register-btn">Register</button>
+        </a>
+      </div>
+
+      <!-- User Profile -->
+      <div id="user-profile" class="user-profile" style="display: none">
+        <img
+          id="user-photo"
+          class="user-photo"
+          src="/assets/images/profile.png"
+          alt="User profile photo"
+        />
+
+        <span id="user-name" class="user-name">U</span>
+
+        <i class="fas fa-chevron-down profile-arrow"></i>
+
+        <div class="profile-dropdown">
+          <a href="/pages/profile.html">
+            <i class="fas fa-user"></i>
+            Profile
+          </a>
+
+          <button id="logout-btn" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 </header>

@@ -238,13 +238,18 @@
 
   .footer-container{
     width:min(100% - 24px, 1400px);
-    grid-template-columns:1fr;
-    text-align:center;
+    grid-template-columns:1fr 1fr;
+    gap: 30px 15px;
+    text-align:left;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
   }
 
   .social-icons,
   .newsletter-form{
-    justify-content:center;
+    justify-content:flex-start;
   }
 
   .newsletter-form input,
@@ -253,7 +258,7 @@
   }
 
   .contact-info li{
-    justify-content:center;
+    justify-content:flex-start;
   }
 }
 

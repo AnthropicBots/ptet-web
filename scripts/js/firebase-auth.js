@@ -1,5 +1,4 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 import {
     getAuth,
     signInWithPopup,
@@ -8,7 +7,9 @@ import {
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
+// Import your central manager
+// Go up two levels to reach the root, then into context
+import { AuthManager } from '../../context/AuthContext.js';
 
 // Firebase config
 const firebaseConfig = {
@@ -22,7 +23,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app); // Exported for use in AuthContext.js
 
 
 /* -----------------------------
@@ -30,23 +31,21 @@ const auth = getAuth(app);
 ----------------------------- */
 
 onAuthStateChanged(auth, (user) => {
-
     if (user) {
-
         console.log("User logged in:", user.email);
 
-        localStorage.setItem("pte_user_logged_in", "true");
-        localStorage.setItem("pte_user_name", user.displayName || "User");
-        localStorage.setItem("pte_user_email", user.email || "");
-        localStorage.setItem("pte_user_photo", user.photoURL || "");
+        // Update centralized state
+        AuthManager.updateState({
+            name: user.displayName || "User",
+            email: user.email,
+            photo: user.photoURL
+        });
 
-        /* update navbar immediately if it exists */
-
+        /* Update navbar immediately */
         const authButtons = document.getElementById("auth-buttons");
         const userProfile = document.getElementById("user-profile");
 
         if (authButtons && userProfile) {
-
             authButtons.style.display = "none";
             userProfile.style.display = "flex";
 
@@ -55,20 +54,11 @@ onAuthStateChanged(auth, (user) => {
 
             if (name) name.textContent = user.displayName || "User";
             if (photo) photo.src = user.photoURL || "";
-
         }
-
     } else {
-
         console.log("User logged out");
-
-        localStorage.removeItem("pte_user_logged_in");
-        localStorage.removeItem("pte_user_name");
-        localStorage.removeItem("pte_user_email");
-        localStorage.removeItem("pte_user_photo");
-
+        AuthManager.updateState(null); // Clear centralized state
     }
-
 });
 
 
@@ -79,50 +69,24 @@ onAuthStateChanged(auth, (user) => {
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
-
 /* GOOGLE LOGIN */
-
 const googleBtn = document.querySelector(".google-login");
-
 if (googleBtn) {
-
     googleBtn.addEventListener("click", () => {
-
         signInWithPopup(auth, googleProvider)
-            .then(() => {
-
-                window.location.href = "../index.html";
-
-            })
-            .catch((error) => {
-                console.error("Google login error:", error);
-            });
-
+            .then(() => window.location.href = "../index.html")
+            .catch((error) => console.error("Google login error:", error));
     });
-
 }
 
-
 /* GITHUB LOGIN */
-
 const githubBtn = document.querySelector(".github-login");
-
 if (githubBtn) {
-
     githubBtn.addEventListener("click", () => {
-
         signInWithPopup(auth, githubProvider)
-            .then(() => {
-
-                window.location.href = "../index.html";
-
-            })
-            .catch((error) => {
-                console.error("GitHub login error:", error);
-            });
-
+            .then(() => window.location.href = "../index.html")
+            .catch((error) => console.error("GitHub login error:", error));
     });
-
 }
 
 
@@ -131,22 +95,29 @@ if (githubBtn) {
 ----------------------------- */
 
 window.firebaseLogout = function () {
-
     signOut(auth)
         .then(() => {
-
             console.log("User signed out");
-
-            localStorage.removeItem("pte_user_logged_in");
-            localStorage.removeItem("pte_user_name");
-            localStorage.removeItem("pte_user_email");
-            localStorage.removeItem("pte_user_photo");
-
+            AuthManager.updateState(null);
             window.location.href = "/index.html";
-
         })
-        .catch((error) => {
-            console.error("Logout error:", error);
-        });
-
+        .catch((error) => console.error("Logout error:", error));
 };
+
+/* -----------------------------
+   UI INTERACTIONS
+----------------------------- */
+document.querySelectorAll('.toggle-password').forEach((btn) => {
+    btn.addEventListener('click', function() {
+        const input = this.previousElementSibling;
+        if (input && input.type === 'password') {
+            input.type = 'text';
+            this.classList.remove('fa-eye');
+            this.classList.add('fa-eye-slash');
+        } else if (input) {
+            input.type = 'password';
+            this.classList.remove('fa-eye-slash');
+            this.classList.add('fa-eye');
+        }
+    });
+});

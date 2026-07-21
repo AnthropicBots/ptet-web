@@ -1,0 +1,759 @@
+/* ==========================================
+   STUDENT PAGE
+========================================== */
+
+.student-hero{
+
+    background:#4d1115;
+    color:#fff;
+    padding:70px 20px;
+
+}
+.hero-stats{
+
+    display:flex;
+    gap:25px;
+
+    margin-top:35px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-stats div{
+
+    background:rgba(255,255,255,.1);
+
+    padding:18px 26px;
+
+    border-radius:8px;
+
+}
+
+.hero-stats h3{
+
+    color:#fff;
+
+    margin-bottom:6px;
+
+}
+
+.hero-stats span{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:14px;
+
+}
+
+.breadcrumb{
+
+    margin-bottom:20px;
+    font-size:14px;
+
+}
+
+.breadcrumb a{
+
+    color:#fff;
+    text-decoration:none;
+
+}
+
+.breadcrumb span{
+
+    margin:0 8px;
+    color:rgba(255,255,255,.85);
+
+}
+
+.hero-content{
+
+    max-width:760px;
+
+}
+
+.hero-content h1{
+
+    color:#fff;
+    font-size:52px;
+    margin-bottom:20px;
+
+}
+
+.hero-content p{
+
+    color:rgba(255,255,255,.92);
+    font-size:18px;
+    line-height:1.8;
+
+}
+
+/* ==========================================
+   LINKS SECTION
+========================================== */
+
+.student-links{
+
+    padding:70px 20px;
+    background:#f7f7f7;
+
+}
+
+.student-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+
+}
+
+.student-card{
+
+    background:#fff;
+    border-radius:10px;
+    padding:40px 35px;
+
+    border-top:4px solid #8d2123;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.student-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
+
+.student-icon{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(141,33,35,.08);
+
+    margin-bottom:20px;
+
+}
+
+.student-icon i{
+
+    color:#8d2123;
+    font-size:26px;
+
+}
+
+.student-card h3{
+
+    margin-bottom:15px;
+    color:#222;
+
+}
+
+.student-card p{
+
+    color:#555;
+    line-height:1.7;
+    margin-bottom:25px;
+
+}
+
+.student-card a{
+
+    text-decoration:none;
+    color:#8d2123;
+    font-weight:600;
+
+}
+
+.student-card a i{
+
+    margin-left:6px;
+    transition:.3s;
+
+}
+
+.student-card:hover a i{
+
+    transform:translateX(5px);
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+    .hero-content h1{
+
+        font-size:38px;
+
+    }
+
+    .hero-content p{
+
+        font-size:16px;
+
+    }
+
+    .student-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================================
+   PROFESSIONALS PAGE
+========================================== */
+
+
+.professional-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+    margin-top:45px;
+
+}
+@media(max-width:992px){
+
+    .professional-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .professional-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+.professional-card{
+
+    background:#fff;
+    border-radius:10px;
+    padding:35px;
+
+    border-top:4px solid #8d2123;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.professional-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
+
+.professional-icon{
+
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    background:rgba(141,33,35,.08);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 auto 18px;
+
+}
+
+.professional-icon i{
+
+    font-size:24px;
+
+    color:#8d2123;
+
+}
+
+.professional-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.professional-card p{
+
+    line-height:1.7;
+    color:#555;
+
+}
+
+@media(max-width:768px){
+
+.professional-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+.profession-list{
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:18px;
+    margin-top:40px;
+
+}
+
+.profession-item{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:#fff;
+
+    padding:16px 24px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(141,33,35,.15);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.profession-item:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#8d2123;
+
+}
+
+.profession-item i{
+
+    color:#8d2123;
+    font-size:18px;
+
+}
+
+.profession-item span{
+
+    font-weight:600;
+
+}
+
+.profession-list{
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:18px;
+    margin-top:40px;
+
+}
+
+.profession-item{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:16px 24px;
+
+    background:#fff;
+
+    border-radius:50px;
+
+    border:1px solid rgba(141,33,35,.15);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.profession-item:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#8d2123;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.1);
+
+}
+
+.profession-item i{
+
+    color:#8d2123;
+
+    font-size:18px;
+
+}
+
+.profession-item span{
+
+    font-weight:600;
+
+    color:#333;
+
+}
+.why-professionals .professional-card{
+
+    padding:28px;
+
+    text-align:center;
+
+}
+
+.why-professionals .professional-icon{
+
+    margin:0 auto 18px;
+
+}
+.about-section.center-heading{
+    margin-top: 50px;
+}
+.professional-hero{
+
+    background:#4d1115;
+    color:#fff;
+    padding:100px 20px;
+
+}
+.professional-stats{
+
+    display:flex;
+    gap:25px;
+
+    margin-top:35px;
+
+    flex-wrap:wrap;
+
+}
+
+.professional-section{
+
+    margin-top:-80px;
+
+}
+
+.countries-section{
+
+    padding-top:52px;
+
+}
+.popular-profession{
+
+    padding-top:55px;
+
+}
+.why-choose-pte{
+
+    padding-top:55px;
+
+}
+
+
+/* ==========================================
+   MIGRATION PAGE
+========================================== */
+
+.migration-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:40px;
+
+}
+
+.migration-card{
+
+    background:#fff;
+    border-radius:10px;
+    padding:35px 30px;
+
+    border-top:4px solid #8d2123;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    text-align:center;
+
+}
+
+.migration-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
+
+.migration-icon{
+
+    width:65px;
+    height:65px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    background:rgba(141,33,35,.08);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.migration-icon i{
+
+    font-size:28px;
+
+    color:#8d2123;
+
+}
+
+.migration-card h3{
+
+    margin-bottom:15px;
+
+    color:#222;
+
+}
+
+.migration-card p{
+
+    color:#555;
+
+    line-height:1.7;
+
+}
+
+/* ==========================================
+   COUNTRY CARDS
+========================================== */
+
+.country-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+    margin-top:45px;
+
+}
+
+.country-card{
+
+    background:#fff;
+
+    border-radius:10px;
+
+    padding:30px 22px;
+
+    text-align:center;
+
+    border-top:4px solid #8d2123;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.country-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
+
+.country-flag{
+
+    font-size:42px;
+
+    margin-bottom:18px;
+
+}
+
+.country-card h3{
+
+    margin-bottom:12px;
+
+}
+
+.country-card p{
+
+    color:#555;
+
+    line-height:1.6;
+
+    font-size:15px;
+
+    margin-bottom:20px;
+
+}
+
+.country-card a{
+
+    color:#8d2123;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.country-card a i{
+
+    margin-left:6px;
+
+    transition:.3s;
+
+}
+
+.country-card:hover a i{
+
+    transform:translateX(5px);
+
+}
+
+/* ==========================================
+   IMPORTANT NOTE
+========================================== */
+
+.migration-note{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:22px;
+
+    background:#fff8f4;
+
+    border-left:5px solid #8d2123;
+
+    padding:28px 30px;
+
+    border-radius:10px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.migration-note i{
+
+    font-size:28px;
+
+    color:#8d2123;
+
+    margin-top:60px;
+
+}
+
+.migration-note h3{
+
+    margin-bottom:10px;
+
+}
+
+.migration-note p{
+
+    color:#555;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:992px){
+
+    .migration-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .country-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .migration-note{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .country-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+.destinations-section{
+
+    padding-top:45px;
+
+}
+
+.note-section{
+
+    padding-top:20px;
+
+}
+
+.why-pte-section{
+
+    padding-top:43px;
+
+}
