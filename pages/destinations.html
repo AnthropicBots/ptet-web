@@ -201,6 +201,18 @@
             background-position: center;
             position: relative;
             overflow: hidden;
+            transition: 0.5s;
+        }
+
+        .dest-card:hover .dest-card-image {
+            transform: scale(1.05);
+        }
+
+        .dest-card-image::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 60%);
         }
 
         .dest-card-image::after {
@@ -248,7 +260,7 @@
         }
 
         .dest-card-body {
-            padding: 28px 26px 24px;
+            padding: 18px 26px 24px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -281,6 +293,52 @@
             line-height: 1.7;
             margin-bottom: 18px;
             flex-grow: 1;
+        }
+
+        .dest-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(141, 33, 35, 0.06);
+            border: 1px solid rgba(141, 33, 35, 0.15);
+            font-size: 14px;
+            color: var(--text-primary);
+            transition: 0.2s ease;
+        }
+
+        .info-item i {
+            color: #7c5cff;
+            width: 16px;
+            text-align: center;
+        }
+
+        .info-item:hover {
+            transform: translate(5px);
+            background: rgba(141, 33, 35, 0.08);
+        }
+
+        .info-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-item strong {
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .info-item small {
+            color: var(--text-secondary);
+            font-size: 14px;
         }
 
         .dest-stats {
@@ -316,7 +374,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 4px;
+            margin-top: auto;
         }
 
         .dest-card-footer .explore-link {
@@ -445,6 +503,8 @@
 
             .dest-card-body {
                 padding: 22px 18px 18px;
+                display: flex;
+                flex-direction: column;
             }
         }
 
@@ -489,6 +549,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
+            height: 100%;
         }
 
         .dest-card.visible {
@@ -499,14 +560,33 @@
         .dest-card:nth-child(1) {
             transition-delay: 0.05s;
         }
+
         .dest-card:nth-child(2) {
             transition-delay: 0.15s;
         }
+
         .dest-card:nth-child(3) {
             transition-delay: 0.25s;
         }
+
         .dest-card:nth-child(4) {
             transition-delay: 0.35s;
+        }
+
+        .dest-card:nth-child(5){
+            transition-delay:.45s;
+        }
+
+        .dest-card:nth-child(6){
+            transition-delay:.55s;
+        }
+
+        .dest-card:nth-child(7){
+            transition-delay:.65s;
+        }
+
+        .dest-card:nth-child(8){
+            transition-delay:.75s;
         }
     </style>
 </head>
@@ -590,6 +670,33 @@
                             <i class="fas fa-map-pin"></i> Sydney · Melbourne · Brisbane
                         </div>
                         <p>World-class education with 8 universities in the global top 100. Vibrant cities, beautiful beaches, and excellent post-study work opportunities.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>University of New South Wales • University of Melbourne</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>Student Visa Friendly</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>2-4 Years Post Study</small>
+                                </div>
+                            </div>
+                        </div> 
+
                         <div class="dest-stats">
                             <div class="stat-item">
                                 <span class="number">8</span>
@@ -625,6 +732,33 @@
                             <i class="fas fa-map-pin"></i> Toronto · Vancouver · Montreal
                         </div>
                         <p>Safe, welcoming, and multicultural. Home to world-leading universities with strong research programs and clear pathways to permanent residency.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>University of Toronto • McGill University</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>Post-Graduation Work Permit (PGWP) Eligible</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>3-year work permit</small>
+                                </div>
+                            </div>
+                        </div> 
+
                         <div class="dest-stats">
                             <div class="stat-item">
                                 <span class="number">3</span>
@@ -660,6 +794,33 @@
                             <i class="fas fa-map-pin"></i> London · Oxford · Edinburgh
                         </div>
                         <p>Home to historic universities like Oxford and Cambridge. World-class education, rich cultural heritage, and access to Europe's job markets.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>University of Oxford • University of Cambridge</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>Eligible for the Graduate Route Visa</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>2-year work permit</small>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="dest-stats">
                             <div class="stat-item">
                                 <span class="number">4</span>
@@ -695,6 +856,33 @@
                             <i class="fas fa-map-pin"></i> Auckland · Wellington · Christchurch
                         </div>
                         <p>Stunning natural beauty with a relaxed lifestyle. Quality education with affordable costs, strong work-study balance, and post-study pathways.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>University of Auckland • University of Otago</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>Post-Study Work Visas (PSWV)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>3-year open Post-Study Work Visa</small>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="dest-stats">
                             <div class="stat-item">
                                 <span class="number">8</span>
@@ -713,6 +901,254 @@
                             <a href="new-zealand.html" class="explore-btn">
     Explore New Zealand <i class="fas fa-arrow-right"></i>
 </a>
+                            <span class="pte-hint">PTE Accepted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== USA ===== -->
+                <div class="dest-card">
+                    <div class="dest-card-image" style="background-image: url('../assets/images/usa.jpg');">
+                        <div class="country-flag">🇺🇸</div>
+                        <span class="country-badge">US Universities</span>
+                    </div>
+                    <div class="dest-card-body">
+                        <h3>USA</h3>
+                        <div class="subtitle">
+                            <i class="fas fa-map-pin"></i> New York City · Los Angeles · Indiana
+                        </div>
+                        <p>Dynamic academic powerhouses with unmatched global prestige, offering strict on-campus employment, competitive STEM extensions, and elite corporate pathways.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>Massachusetts Institute of Technology (MIT) • Princeton University</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>F-1 Student Visa</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>12 months of post-completion work authorization</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dest-stats">
+                            <div class="stat-item">
+                                <span class="number">12</span>
+                                <span class="label">Universities</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">53-70</span>
+                                <span class="label">PTE Score</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">Optional Practical Training (OPT)</span>
+                                <span class="label">Post-Study Work</span>
+                            </div>
+                        </div>
+                        <div class="dest-card-footer">
+                            <a href="usa.html" class="explore-link">
+                                Explore USA <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <span class="pte-hint">PTE Accepted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== GERMANY ===== -->
+                <div class="dest-card">
+                    <div class="dest-card-image" style="background-image: url('../assets/images/germany.jpg');">
+                        <div class="country-flag">🇩🇪</div>
+                        <span class="country-badge">Germany Universities</span>
+                    </div>
+                    <div class="dest-card-body">
+                        <h3>Germany</h3>
+                        <div class="subtitle">
+                            <i class="fas fa-map-pin"></i> Berlin • Munich • Hamburg
+                        </div>
+                        <p>Tuition-free world-class education with rich industrial ties, generous 140-day student work rights, and an open 18-month graduate pathway to fast-tracked European residency.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>Technical University of Munich (TUM) • LMU Munich (Ludwig-Maximilians-Universität)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>The Blocked Account (Sperrkonto)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>18-Month Job-Seeking Visa</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dest-stats">
+                            <div class="stat-item">
+                                <span class="number">6</span>
+                                <span class="label">Universities</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">59+</span>
+                                <span class="label">PTE Score</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">18-Month Job-Seeking Visa and Fast-Track Permanent Residency (PR)</span>
+                                <span class="label">Post-Study Work</span>
+                            </div>
+                        </div>
+                        <div class="dest-card-footer">
+                            <a href="germany.html" class="explore-link">
+                                Explore Germany <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <span class="pte-hint">PTE Accepted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== IRELAND ===== -->
+                <div class="dest-card">
+                    <div class="dest-card-image" style="background-image: url('../assets/images/ireland.jpeg');">
+                        <div class="country-flag">🇮🇪</div>
+                        <span class="country-badge">Ireland Universities</span>
+                    </div>
+                    <div class="dest-card-body">
+                        <h3>Ireland</h3>
+                        <div class="subtitle">
+                            <i class="fas fa-map-pin"></i> Dublin • Cork • Galway
+                        </div>
+                        <p>English-speaking European tech hub offering high-quality degrees, steady 20-hour work-study balances, and a direct 2-year graduate pathway to booming global corporate sectors.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>Trinity College Dublin (TCD) • University College Dublin (UCD)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>Irish Student Visa (Stamp 2)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>12-month post-study work visa.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dest-stats">
+                            <div class="stat-item">
+                                <span class="number">8</span>
+                                <span class="label">Universities</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">58+</span>
+                                <span class="label">PTE Score</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">Eligible for a 12-month post-study work visa and 24-month (2-year) post-study work visa</span>
+                                <span class="label">Post-Study Work</span>
+                            </div>
+                        </div>
+                        <div class="dest-card-footer">
+                            <a href="ireland.html" class="explore-link">
+                                Explore Ireland <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <span class="pte-hint">PTE Accepted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== SINGAPORE ===== -->
+                <div class="dest-card">
+                    <div class="dest-card-image" style="background-image: url('../assets/images/singapore.jpg');">
+                        <div class="country-flag">🇸🇬</div>
+                        <span class="country-badge">Singapore Universities</span>
+                    </div>
+                    <div class="dest-card-body">
+                        <h3>Singapore</h3>
+                        <div class="subtitle">
+                            <i class="fas fa-map-pin"></i> Singapore
+                        </div>
+                        <p>Ultra-modern global financial hub offering top-15 ranked degrees, a regulated 16-hour work limit, and an efficient 1-year graduate job-seeking window into elite multinational careers.</p>
+
+                        <div class="dest-info">
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <strong>TOP UNIVERSITIES</strong>
+                                    <small>National University of Singapore (NUS) • Nanyang Technological University (NTU)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-passport"></i>
+                                <div>
+                                    <strong>VISA</strong>
+                                    <small>Student's Pass On-Line Application & Registration (SOLAR)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>WORK RIGHTS</strong>
+                                    <small>Employment Pass (EP) or the S-Pass</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dest-stats">
+                            <div class="stat-item">
+                                <span class="number">8</span>
+                                <span class="label">Universities</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">58+</span>
+                                <span class="label">PTE Score</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">Eligible for a 12-month post-study work visa and 24-month (2-year) post-study work visa</span>
+                                <span class="label">Post-Study Work</span>
+                            </div>
+                        </div>
+                        <div class="dest-card-footer">
+                            <a href="singapore.html" class="explore-link">
+                                Explore Singapore <i class="fas fa-arrow-right"></i>
+                            </a>
                             <span class="pte-hint">PTE Accepted</span>
                         </div>
                     </div>
