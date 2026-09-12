@@ -27,7 +27,7 @@ workflows:
 
   issue_management:
     enabled: true
-    stale_issue_days: 3
+    stale_issue_days: 30
     close_stale_after_days: 7
     auto_unassign_inactive_days: 7
 
