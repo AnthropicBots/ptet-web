@@ -32,6 +32,7 @@ workflows:
     auto_unassign_inactive_days: 7
 
 permissions:
+  default_command_access: write_access
   global:
     label_command:
       allow:
