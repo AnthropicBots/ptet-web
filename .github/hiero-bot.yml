@@ -16,16 +16,24 @@ workflows:
       Welcome to our ptet-web project! 🎉
       Thanks for contributing. Please read CONTRIBUTING.md before getting started.
 
-  # Quality-gate report + labels on every PR (drafts are ignored).
+  # Quality gates, AI review and labels on every PR (drafts are ignored).
   pull_request:
     enabled: true
     reviewer_recommendation: false     # off: real reviewer assignment (below) replaces suggestions
     quality_gates:
-      require_dco: false
-      require_linked_issue: false
+      require_dco: false               # this repo has no DCO check
+      require_linked_issue: true       # PR description must contain "Closes/Fixes/Resolves #N"
       require_tests: false             # static website: tests are optional
+      max_files_changed: 25            # ask contributors to split very large PRs
+    # AI code review: runs when a PR is opened or reopened (not on every push).
+    # Posts a scored summary comment plus up to max_comments inline comments.
+    # Needs matching credentials on the bot server (OPENAI_API_KEY + OPENAI_BASE_URL).
     ai_review:
-      enabled: false
+      enabled: true
+      provider: openai
+      model: "google/gemma-4-31b-it"
+      focus_areas: [security, logic, style]
+      max_comments: 5
     auto_label: true
 
   # Auto-request a reviewer when a PR is opened.
