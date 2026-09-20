@@ -1,0 +1,13 @@
+# .github/reviewers.yml — who the bot may request as a reviewer.
+# Set `available: false` to take someone out of rotation (vacation, busy, etc.).
+# Every login MUST be a collaborator on AnthropicBots/ptet-web, or GitHub rejects the request.
+# The PR author is skipped automatically.
+reviewers:
+  - login: BHUVANSH855
+    available: true
+
+  - login: mohityadav8
+    available: true
+
+  - login: Yashraj-Jangra
+    available: false
