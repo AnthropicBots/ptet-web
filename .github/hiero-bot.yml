@@ -19,7 +19,7 @@ workflows:
   # Quality-gate report + labels on every PR (drafts are ignored).
   pull_request:
     enabled: true
-    reviewer_recommendation: true      # suggests reviewers from file history
+    reviewer_recommendation: false     # off: real reviewer assignment (below) replaces suggestions
     quality_gates:
       require_dco: false
       require_linked_issue: false
@@ -27,6 +27,18 @@ workflows:
     ai_review:
       enabled: false
     auto_label: true
+
+  # Auto-request a reviewer when a PR is opened.
+  # Candidates come from .github/reviewers.yml on main (available: true only).
+  # The PR author is never picked. Every login there must be a repo collaborator.
+  reviewer_assignment:
+    enabled: true
+    availability_file: ".github/reviewers.yml"
+    reviewers_count: 1
+    strategy: "round-robin"            # or "random"
+    exclude_pr_author: true
+    fallback_to_all_if_none_available: true
+    notify_comment: "off"              # "mention" also comments "@reviewer please review this PR"
 
   # Health score (0-100). Weights are tuned for a website with no DCO check:
   # they sum to 1.0 and tests count for little.
