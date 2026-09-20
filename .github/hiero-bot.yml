@@ -1,46 +1,57 @@
+# .github/hiero-bot.yml — Hydra Maintainer config for AnthropicBots/ptet-web
+# The bot stays silent in any repo without this file. Edits take effect after the
+# file is pushed to the default branch (the bot clears its config cache on push).
+
 repo: "AnthropicBots/ptet-web"
 
 workflows:
+
+  # Welcome first-time contributors on their first issue.
+  # Owners, members, collaborators and past contributors are skipped by design.
   onboarding:
     enabled: true
+    welcome_first_time_only: true
+    max_concurrent_assignments: 3      # open issues one person may hold via /assign
     welcome_message: |
-      Welcome to our ptet-web project! 🎉 
+      Welcome to our ptet-web project! 🎉
       Thanks for contributing. Please read CONTRIBUTING.md before getting started.
 
+  # Quality-gate report + labels on every PR (drafts are ignored).
   pull_request:
     enabled: true
+    reviewer_recommendation: true      # suggests reviewers from file history
     quality_gates:
       require_dco: false
       require_linked_issue: false
-      require_tests: false
+      require_tests: false             # static website: tests are optional
     ai_review:
       enabled: false
     auto_label: true
 
+  # Health score (0-100). Weights are tuned for a website with no DCO check:
+  # they sum to 1.0 and tests count for little.
   pr_health:
     enabled: true
+    score_weights:
+      has_tests: 0.10
+      has_linked_issue: 0.25
+      has_description: 0.25
+      review_count: 0.25
+      small_diff: 0.15
+    label_healthy_above: 60            # 60+ -> "health: 💚 healthy"
+    comment_threshold: 40              # only nag below this (or when labeled needs work)
 
+  # After a merge: celebrate milestones and suggest next issues.
+  # Suggestions come from OPEN, UNASSIGNED issues carrying the "intermediate" label.
   progression:
     enabled: true
     recommend_issues_after_merge: true
     celebrate_milestones: true
 
+  # Scheduled scan: stale after 30 days, closed 7 days later, unassign after 7 idle days.
+  # Issues labeled pinned / security / in-progress are exempt.
   issue_management:
     enabled: true
     stale_issue_days: 30
     close_stale_after_days: 7
     auto_unassign_inactive_days: 7
-
-permissions:
-  default_command_access: write_access
-  global:
-    label_command:
-      allow:
-        - maintainers
-        - committers
-        - collaborators
-        - write_access
-        - org_members
-
-  fallback_policy:
-    default_command_access: write_access
