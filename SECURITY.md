@@ -58,3 +58,9 @@ Out of scope:
 - Do not add third-party scripts without discussing them in an issue first.
 - If you accidentally commit a secret, tell a maintainer immediately so it can be rotated.
   Deleting the commit is not enough.
+
+
+## Disclosure policy
+
+Please give us a reasonable amount of time to fix an issue before disclosing it publicly.
+Once a fix is available, we will agree a disclosure date with you.
